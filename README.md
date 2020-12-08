@@ -1,7 +1,7 @@
 # cuda-example
 
 ## Execute nvcc
-실행 결과 에러가 `.c` 파일은 에러가 발생하고 `.cu` 파일은 제대로 작동하지 않는다. 이는 CPU와 GPU가 각자의 메모리 공간을 가지고 있어서 직접 접근이 불가능하기 때문이다. 즉, GPU(device) 메모리로 CPU(host) 메모리의 값을 옮겨주어야 된다.  
+실행 결과 `.c` 파일은 에러가 발생하고 `.cu` 파일은 제대로 작동하지 않는다. 이는 CPU와 GPU가 각자의 메모리 공간을 가지고 있어서 직접 접근이 불가능하기 때문이다. 즉, GPU(device) 메모리로 CPU(host) 메모리의 값을 옮겨주어야 된다.  
 
 따라서 CUDA 프로그램을 사용하기 위해서는 아래와 같은 과정을 거쳐야 한다.
 1. Allocate host memory and initialized host data
