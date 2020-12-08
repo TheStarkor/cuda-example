@@ -282,7 +282,7 @@ $ nvprof ./vector_add_grid
 ```
 
 ## 결론
-CUDA를 통해 쉽게 GPU 병렬 계산을 진행 할 수 있다. 그리고 이 결과 아래 표에서 확인 할 수 있듯이 상당한 성능 향상이 이루어졌다.
+CUDA를 통해 쉽게 GPU 병렬 계산을 진행 할 수 있고 아래 표에서 확인 할 수 있듯이 상당한 성능 향상이 이루어졌다.
 
 | Version | Execution Time(ms) | Speedup |
 |---|:---:|---:|
