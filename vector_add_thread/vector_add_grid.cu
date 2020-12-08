@@ -1,4 +1,4 @@
-// nvcc vector_add_ans.cu -o vector_add
+// nvcc vector_add_thread.cu -o vector_add_thread
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,8 +10,10 @@
 #define MAX_ERR 1e-6
 
 __global__ void vector_add(float *out, float *a, float *b, int n) {
-    for (int i = 0; i < n; i++) {
-        out[i] = a[i] + b[i];
+    int tid = blockIdx.x * blockDim.x + threadIdx.x;
+
+    if (tid < n) {
+        out[tid] = a[tid] + b[tid];
     }
 }
 
@@ -35,7 +37,9 @@ int main() {
     cudaMemcpy(d_a, a, sizeof(float) * N, cudaMemcpyHostToDevice);
     cudaMemcpy(d_b, b, sizeof(float) * N, cudaMemcpyHostToDevice);
 
-    vector_add<<<1,1>>>(d_out, d_a, d_b, N);
+    int block_size = 256;
+    int grid_size = ((N + block_size) / block_size);
+    vector_add<<<grid_size,block_size>>>(d_out, d_a, d_b, N);
 
     cudaMemcpy(out, d_out, sizeof(float) * N, cudaMemcpyDeviceToHost);
 

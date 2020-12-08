@@ -136,7 +136,7 @@ sys     0m4.372s
 ### nvprof
 CUDA는 `nvprof`이라는 commandline profiler tool을 제공해준다. 이를 활용해서 `time`보다 자세한 정보를 얻을 수 있다.
 ```
-$ nvprof ./vector_add
+$ sudo /usr/local/cuda/bin/nvprof ./vector_add
 ==14683== Profiling application: ./vector_add
 ==14683== Profiling result:
             Type  Time(%)      Time     Calls       Avg       Min       Max  Name
